@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prog_mobile_tp2/etudiant_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -33,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 20,
           ),
           Row(children: [
-            const Text('Matricule'),
+            const Text('Email'),
           ]),
           const SizedBox(
             height: 5,
@@ -41,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
           TextFormField(
             controller: matriculeController,
             decoration: const InputDecoration(
-              hintText: 'SI007210',
+              hintText: 'example@gmail.com',
               alignLabelWithHint: true,
               border: OutlineInputBorder(),
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -74,13 +75,22 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Text('CONNECTEZ-VOUS',
                     style: TextStyle(color: Colors.black))),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Text("Nom d'utilisateur ou mot de passe oublié ?",
               style: TextStyle(color: Theme.of(context).primaryColor)),
           const Text("Vous n'avez pas un compte ?"),
           const SizedBox(height: 10),
-          Text("Créez un compte",
-              style: TextStyle(color: Theme.of(context).primaryColor)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 100),
+            child: ListTile(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EtudiantPage()));
+              },
+              title: Text("Créez un compte",
+                  style: TextStyle(color: Theme.of(context).primaryColor)),
+            ),
+          ),
           Text("Aide?",
               style: TextStyle(color: Theme.of(context).primaryColor)),
         ],
