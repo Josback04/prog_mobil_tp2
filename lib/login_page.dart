@@ -14,8 +14,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      child: Column(
         children: [
+          const SizedBox(
+            height: 50,
+          ),
           const Text(
             'Connexion',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -27,9 +32,11 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(
             height: 20,
           ),
-          const Text('Matricule'),
+          Row(children: [
+            const Text('Matricule'),
+          ]),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           TextFormField(
             controller: matriculeController,
@@ -43,9 +50,9 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(
             height: 20,
           ),
-          const Text('Mot de passe'),
+          Row(children: [const Text('Mot de passe')]),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           TextFormField(
             controller: passwordController,
@@ -58,19 +65,26 @@ class _LoginPageState extends State<LoginPage> {
                 suffixIcon: Icon(Icons.visibility_off)),
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(),
-              child: const Text('CONNECTEZ-VOUS')),
+          SizedBox(
+            width: 250,
+            child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor),
+                child: const Text('CONNECTEZ-VOUS',
+                    style: TextStyle(color: Colors.black))),
+          ),
           const SizedBox(height: 10),
-          const Text("Nom d'utilisateur ou mot de passe oublié ?",
-              style: TextStyle(color: Colors.orange)),
+          Text("Nom d'utilisateur ou mot de passe oublié ?",
+              style: TextStyle(color: Theme.of(context).primaryColor)),
           const Text("Vous n'avez pas un compte ?"),
           const SizedBox(height: 10),
-          const Text("Créez un compte", style: TextStyle(color: Colors.orange)),
-          const Text("Aide?", style: TextStyle(color: Colors.orange)),
+          Text("Créez un compte",
+              style: TextStyle(color: Theme.of(context).primaryColor)),
+          Text("Aide?",
+              style: TextStyle(color: Theme.of(context).primaryColor)),
         ],
       ),
-    );
+    ));
   }
 }
